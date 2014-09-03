@@ -1,0 +1,19 @@
+{
+  "name": "311",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.11",
+    "bootstrap": "~3.2.0",
+    "fontawesome": "~4.2.0"
+  }
+}
