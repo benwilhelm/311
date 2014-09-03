@@ -7,7 +7,7 @@ router.get('/stories/new', function(req, res){
 });
 
 router.post('/stories', function(req, res){
-  console.log(req);
+  console.log(req.body);
   res.redirect('/stories/new');
 });
 
