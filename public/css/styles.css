@@ -1,0 +1,31 @@
+.deemph {
+    text-transform: lowercase;
+    font-variant: small-caps;
+}
+
+body {
+    background: url(/images/pothole.jpg) right center no-repeat fixed;
+    background-size: cover;
+}
+
+#container {
+    background-color: rgba(255,255,255,0.75);
+    border-radius: 7px;
+    margin: 1em 3em 3em;
+    max-width: 768px;
+    padding: 2em 2em 4em;
+}
+
+#container > h1:first-child,
+#container > h2:first-child,
+#container > h3:first-child {
+    margin-top: 0;
+}
+
+nav.navbar-default {
+    background-color: #fff;
+    border: none;
+    border-radius: 0;
+    font-weight: bold;
+    color: #333;
+}

@@ -1,11 +1,20 @@
+<h2>Tell us your tale.</h2>
+
+<p>Give us the full story. Tell us what you initially called 311 to report, how it was resolved, if it required any follow-up reports, what was done incorrectly, whether the issue is still outstanding, etc.</p>
+
 <form action="/stories" method='post'>
-  
+    
   <div class="form-group">
-    <label class="control-label">Summary</label>
     <textarea name="summary" id="summary" cols="30" rows="10" class="form-control"></textarea>
   </div>
 
   <div id='ticket_groups'>
+    <h3>Back up your story</h3>
+    
+    <p>
+      The best thing we can have to back up your story and get the city to see the problem is your ticket history. You probably received a text message with a number in the form <code>14-00000000</code>. Use the "Add 311 Ticket" button to add as many tickets to your story as applicable. If you don't have the ticket numbers, you can use this section to detail individual 311 calls and their approximate dates.
+      <a class='deemph' href='/stories/random' target='_blank'>See an example.</a>
+    </p>
     
     <div id='story_controls' class="btn-group">
       <a id='add_ticket' class='btn btn-default' href="#">Add 311 Ticket</a>
