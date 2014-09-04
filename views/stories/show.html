@@ -1,0 +1,11 @@
+<div id="summary">
+  {{story.summary}}
+</div>
+
+{{#each story._tickets}}
+<dl>
+  <dt>Ticket #{{number}}</dt>
+  <dd>Closed on {{date}}</dd>
+  <dd>{{description}}</dd>
+</dl>
+{{/each}}
