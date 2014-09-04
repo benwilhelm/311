@@ -6,26 +6,6 @@
   </div>
 
   <div id='ticket_groups'>
-    <div class='well ticket-group'>
-      <div class="col-sm-4">
-        <div class='form-group'>
-          <label class="control-label">Ticket Number</label>
-          <input type="text" name="tickets[0][number]" class="form-control" placeholder='eg. 14-00620191'>
-        </div>
-        
-        <div class='form-group'>
-          <label for="tickets[]date" class="control-label">Approximate Date Closed</label>
-          <input type="text" name="tickets[0][date]" class="form-control" data-provide='datepicker'>
-        </div>
-      </div>
-  
-      <div class="col-sm-8 form-group">
-        <label for="tickets[]description" class="control-label">Ticket Description</label>
-        <textarea name="tickets[0][description]" rows="5" class="form-control"></textarea>
-      </div>
-      
-      <div class="clearfix"></div>
-    </div><!-- .ticket-group -->
     
     <div id='story_controls' class="btn-group">
       <a id='add_ticket' class='btn btn-default' href="#">Add 311 Ticket</a>
@@ -33,3 +13,28 @@
     </div>
   </div><!-- #ticket_groups -->
 </form>
+
+<!-- ### Handlebars template for new ticket -->
+<script id='new_ticket_template' type='text/x-handlebars-template'>
+  <div class='well ticket-group'>
+    <div class="col-sm-4">
+      <div class='form-group'>
+        <label class="control-label">Ticket Number</label>
+        <input type="text" name="tickets[0][number]" class="form-control" placeholder='eg. 14-00620191'>
+      </div>
+      
+      <div class='form-group'>
+        <label for="tickets[]date" class="control-label">Approximate Date Closed</label>
+        <input type="text" name="tickets[0][date]" class="form-control" data-provide='datepicker'>
+      </div>
+    </div>
+
+    <div class="col-sm-8 form-group">
+      <label for="tickets[]description" class="control-label">Ticket Description</label>
+      <textarea name="tickets[0][description]" rows="5" class="form-control"></textarea>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div><!-- .ticket-group -->
+</script>
+<!-- end Handlebars Template -->
