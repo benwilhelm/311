@@ -36,11 +36,37 @@ router.get('/stories/new', function(req, res){
   res.render('stories/new');
 });
 
+router.get('/stories/random', function(req, res){
+  Story.find({approvedForRandom:true}, function(err, stories){
+    var len = stories.length;
+    var idx = Math.floor( Math.random() * len );
+    var story = stories[idx];
+    story.populate('_tickets', function(err, story){
+      res.render('stories/show', {
+        pageTitle: "Random User-Submitted Story",
+        story: stories[idx]
+      });
+    });
+  });
+});
+
+router.get('/stories/example', function(req, res){
+  Story.findOne({isExample:true}).populate('_tickets').exec(function(err, story){
+    res.render('stories/show', {
+      pageTitle: "The Story That Started this Site",
+      story: story
+    });
+  });
+});
+
 /**
  * GET /stories/:story_id
  */
 router.get('/stories/:story_id', getRequestedStory, function(req, res){
-  res.render('stories/show', {story: req.story});
+  res.render('stories/show', {
+    pageTitle: "User Story of Woe",
+    story: req.story
+  });
 })
 
 

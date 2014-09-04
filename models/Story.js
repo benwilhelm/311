@@ -12,7 +12,17 @@ var StorySchema = new Schema({
   _tickets: [{
     type: Schema.Types.ObjectId,
     ref: 'Ticket'
-  }]
+  }],
+  
+  approvedForRandom: {
+    type: Boolean,
+    default: false
+  },
+
+  isExample: {
+    type: Boolean,
+    default: false
+  }
 });
   
 mongoose.model('Story', StorySchema);
