@@ -24,6 +24,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+var mongo_url = "mongodb://localhost/311_development";
+
 switch (app.get('env')) {
   case 'development':
     app.use(morgan('dev'));
@@ -32,11 +34,7 @@ switch (app.get('env')) {
     process.env.PORT = 3000;
     break;
   case 'production':
-    var mongo_url = process.env.DATABASE_URL;
-    break;
-  
-  default:
-    var mongo_url = "mongodb://localhost/311_development";
+    var mongo_url = process.env.MONGOLAB_URI;
     break;
 }
 
