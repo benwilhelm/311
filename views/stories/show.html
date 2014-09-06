@@ -7,7 +7,15 @@
 {{#each story._tickets}}
 <dl>
   <dt>Ticket #{{number}}</dt>
-  <dd>Closed on {{date}}</dd>
+
+  {{#if date_opened}}
+    <dd>Opened on or about {{date_opened}}</dd>
+  {{/if}}
+  
+  {{#if date_closed}}
+    <dd>Closed on or about {{date_closed}}</dd>
+  {{/if}}
+
   <dd>{{description}}</dd>
 </dl>
 {{/each}}

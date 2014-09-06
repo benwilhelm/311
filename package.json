@@ -13,10 +13,14 @@
     "body-parser": "^1.7.0",
     "morgan": "^1.3.0",
     "numeral": "^1.5.3",
-    "moment": "^2.8.3"
+    "moment": "^2.8.3",
+    "mongoose-migrate": "^0.1.5"
   },
   "main": "server.js",
   "engines": {
     "node": "0.10.x"
+  },
+  "devDependencies": {
+    "mongodb": "^1.4.10"
   }
 }

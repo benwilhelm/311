@@ -7,7 +7,11 @@ var TicketSchema = new Schema({
     type: String
   },
   
-  date: {
+  date_opened: {
+    type: Date
+  },
+  
+  date_closed: {
     type: Date
   },
   

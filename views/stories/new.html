@@ -33,14 +33,19 @@
       </div>
       
       <div class='form-group'>
+        <label for="tickets[]date" class="control-label">Approximate Date Opened</label>
+        <input type="text" name="tickets[0][date_opened]" class="form-control" data-provide='datepicker'>
+      </div>
+      
+      <div class='form-group'>
         <label for="tickets[]date" class="control-label">Approximate Date Closed</label>
-        <input type="text" name="tickets[0][date]" class="form-control" data-provide='datepicker'>
+        <input type="text" name="tickets[0][date_closed]" class="form-control" data-provide='datepicker'>
       </div>
     </div>
 
     <div class="col-sm-8 form-group">
       <label for="tickets[]description" class="control-label">Ticket Description</label>
-      <textarea name="tickets[0][description]" rows="5" class="form-control"></textarea>
+      <textarea name="tickets[0][description]" rows="9" class="form-control"></textarea>
     </div>
     
     <div class="clearfix"></div>
