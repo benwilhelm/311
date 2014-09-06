@@ -31,11 +31,17 @@ switch (app.get('env')) {
   case 'test':
     process.env.PORT = 3000;
     break;
+  case 'production':
+    var mongo_url = process.env.DATABASE_URL;
+    break;
+  
+  default:
+    var mongo_url = "mongodb://localhost/311_development";
+    break;
 }
 
 
-
-mongoose.connect("mongodb://localhost/311_development");
+mongoose.connect(mongo_url);
 
 app.get("/", function(req, res){
   res.render("index.html");
