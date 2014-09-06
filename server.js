@@ -3,6 +3,7 @@ var express = require('express')
   , bodyParser = require('body-parser')
   , cookeParser = require('cookie-parser')
   , hbs = require('hbs')
+  , hbsHelpers = require('./lib/hbs-helpers.js')
   , mongoose = require('mongoose')
   , morgan = require('morgan')
   ;
@@ -10,6 +11,7 @@ var express = require('express')
 require('./models/Story');
 require('./models/Ticket');
 
+hbsHelpers.register(hbs);
 
 app.set('appRoot', __dirname);
 app.set('env', process.env.NODE_ENV || 'development');
