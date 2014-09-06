@@ -53,7 +53,7 @@ router.get('/stories/random', function(req, res){
 router.get('/stories/example', function(req, res){
   Story.findOne({isExample:true}).populate('_tickets').exec(function(err, story){
     res.render('stories/show', {
-      pageTitle: "The Story That Started this Site",
+      pageTitle: "The Story That Prompted this Site",
       story: story
     });
   });

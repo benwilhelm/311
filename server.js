@@ -31,7 +31,7 @@ switch (app.get('env')) {
     app.use(morgan('dev'));
     break;
   case 'test':
-    process.env.PORT = 3000;
+    process.env.PORT = 3001;
     break;
   case 'production':
     var mongo_url = process.env.MONGOLAB_URI;
