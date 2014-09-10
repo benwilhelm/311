@@ -4,16 +4,18 @@
   {{Nl2Br story.summary}}
 </div>
 
+
+<h3>Relevant Tickets</h3>
 {{#each story._tickets}}
 <dl>
   <dt>Ticket #{{number}}</dt>
 
   {{#if date_opened}}
-    <dd>Opened on or about {{date_opened}}</dd>
+    <dd>Opened on or about {{FormatDate date_opened "MMMM Do, YYYY"}}</dd>
   {{/if}}
   
   {{#if date_closed}}
-    <dd>Closed on or about {{date_closed}}</dd>
+    <dd>Closed on or about {{FormatDate date_closed "MMMM Do, YYYY"}}</dd>
   {{/if}}
 
   <dd>{{description}}</dd>
