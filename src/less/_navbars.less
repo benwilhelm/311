@@ -1,0 +1,49 @@
+#top_bar.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    height: 2em;
+    margin-bottom: 3em;
+    position: relative;
+    z-index: 100;
+    
+    .navbar-brand {
+        color: @primary;
+        font-family: 'Stardos Stencil', cursive;
+        font-size: x-large;
+    }
+    
+    form.search {        
+        background-color: @secondary;
+        text-align: center;
+        padding-top: 1em;
+        
+        div.ribbon {
+            @ribbon_height: 15px;
+            border: 125px solid @secondary;
+            border-bottom-width: 0;
+            border-top-width: @ribbon_height;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            
+            clear: both;
+            height: 0;
+            width: 0;
+            
+            position: relative;
+            bottom: -@ribbon_height;
+            z-index: 101;
+        }
+    }
+}
+
+
+#secondary_column nav a {
+    color: @primary;
+    margin: 0 0 1em ;
+    
+    &:hover {
+        background-color: @secondary;
+        color: #fff;
+    }
+}

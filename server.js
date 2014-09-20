@@ -42,7 +42,7 @@ switch (app.get('env')) {
 mongoose.connect(mongo_url);
 
 app.get("/", function(req, res){
-  res.render("index.html");
+  res.render("index.html", {pageTitle: "Three-one-runaround..."});
 });
 
 app.use(require('./routes/stories'));
