@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Stardos+Stencil);
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700);
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -6184,9 +6184,9 @@ button.close {
   z-index: 100;
 }
 #top_bar.navbar .navbar-brand {
-  color: #000000;
-  font-family: 'Stardos Stencil', cursive;
-  font-size: x-large;
+  color: #bbbbbb;
+  font-family: 'Yanone Kaffeesatz', Georgia, Times, serif;
+  font-size: 2em;
 }
 #top_bar.navbar form.search {
   background-color: #bbbbbb;
@@ -6208,7 +6208,6 @@ button.close {
 }
 #secondary_column nav a {
   color: #000000;
-  margin: 0 0 1em ;
 }
 #secondary_column nav a:hover {
   background-color: #bbbbbb;
@@ -6227,6 +6226,7 @@ h2,
 h3,
 h4 {
   color: #333;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 #content {
   background-color: #fff;
@@ -6250,9 +6250,10 @@ h4 {
 .page-header {
   border-bottom: none;
   color: #fff;
-  font-size: 56px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 68px;
   line-height: 1.2;
-  margin-top: -100px;
+  margin-top: -1.7em;
   margin-bottom: 30px;
   position: relative;
 }

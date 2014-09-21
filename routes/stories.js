@@ -33,7 +33,7 @@ var getRequestedStory = function(req, res, next){
  * GET /stories/new
  */
 router.get('/stories/new', function(req, res){
-  res.render('stories/new');
+  res.render('stories/new', {pageTitle: 'Tell us your tale'});
 });
 
 router.get('/stories/random', function(req, res){
