@@ -37,7 +37,7 @@ router.get('/stories/new', function(req, res){
 });
 
 router.get('/stories/random', function(req, res){
-  Story.find({approvedForRandom:true}, function(err, stories){
+  Story.find({featured:true}, function(err, stories){
     var len = stories.length;
     var idx = Math.floor( Math.random() * len );
     var story = stories[idx];

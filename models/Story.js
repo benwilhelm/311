@@ -14,7 +14,12 @@ var StorySchema = new Schema({
     ref: 'Ticket'
   }],
   
-  approvedForRandom: {
+  approvedForPublic: {
+    type: Boolean,
+    default: false
+  },
+  
+  featured: {
     type: Boolean,
     default: false
   },
@@ -24,5 +29,14 @@ var StorySchema = new Schema({
     default: false
   }
 });
+
+
+StorySchema.pre('save', function(next){
+  var self = this;
+  if (self.featured) {
+    self.approvedForPublic = true;
+  }
+  next();
+})
   
 mongoose.model('Story', StorySchema);
