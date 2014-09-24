@@ -1,11 +1,16 @@
 module.exports = function(req, res, next) {
   
+  if (req.user) {
+    res.locals.loggedIn = true;
+    res.pageClasses = ['logged-in'];
+  }
+  
   // add classes to body tag
   res.pageClasses = res.pageClasses || [];
   var pageClasses = pageClassesFromPath(req.originalUrl);
   res.pageClasses = res.pageClasses.concat( pageClasses );
   res.locals.pageClasses = res.pageClasses.join(' ');
-  
+
   next();
 }
 

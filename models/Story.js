@@ -1,12 +1,12 @@
 var mongoose = require('mongoose')
   , Schema = mongoose.Schema
   ;
-  
+
 var StorySchema = new Schema({
   
   summary: {
     type: String,
-    req: "Please provide a summary of your issue"
+    required: "Please provide a summary of your issue"
   },
   
   _tickets: [{

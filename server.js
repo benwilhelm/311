@@ -1,12 +1,16 @@
 var express = require('express')
   , app = express()
+  , authrizr = require('authrizr')
+  , passport = authrizr.authStrategies.passport
   , bodyParser = require('body-parser')
   , cookeParser = require('cookie-parser')
   , hbs = require('hbs')
   , hbsHelpers = require('./lib/hbs-helpers.js')
   , helperMiddleware = require('./middleware/helpers.js')
+  , methodOverride = require('method-override')
   , mongoose = require('mongoose')
   , morgan = require('morgan')
+  , session = require('express-session')
   ;
 
 require('./models/Story');
@@ -19,12 +23,24 @@ app.set('env', process.env.NODE_ENV || 'development');
 app.set('view engine', 'html') ;
 app.engine('html', hbs.__express) ;
 
-app.use(helperMiddleware);
+app.use(methodOverride("_method"));
 app.use(express.static('./public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'foobar',
+  saveUninitialized: true,
+  resave: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(helperMiddleware);
+
+
+
 
 var mongo_url = "mongodb://localhost/311_development";
 

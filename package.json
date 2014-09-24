@@ -5,6 +5,7 @@
   "private": "true",
   "dependencies": {
     "express": "4.x",
+    "authrizr": "git://github.com/benwilhelm/node-authrizr.git#release",
     "hbs": "^2.7.0",
     "lodash": "^2.4.1",
     "mongoose": "^3.8.15",
@@ -15,7 +16,9 @@
     "numeral": "^1.5.3",
     "moment": "^2.8.3",
     "mongoose-migrate": "^0.1.5",
-    "mongodb": "^1.4.10"
+    "mongodb": "^1.4.10",
+    "express-session": "^1.8.2",
+    "method-override": "^2.2.0"
   },
   "main": "server.js",
   "engines": {

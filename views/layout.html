@@ -18,6 +18,14 @@
   <div id='top_bar' class="navbar">
     <div class="container">
       <p class='navbar-left'><a href="/" class="navbar-brand">Chicago 311 Woes</a></p>
+      
+      {{#if loggedIn}}
+      <ul class="nav navbar-nav">
+        <li><a href="/stories/approved">Approved Stories</a></li>
+        <li><a href="/stories/unapproved">Unapproved Stories</a></li>
+      </ul>
+      {{/if}}
+      
       <form action="/search" class="search navbar-right form-inline">
         <input type="text" name='search' placeholder='Search...' class='form-control'>
         <input type="submit" value='Go' class='btn btn-primary'>        

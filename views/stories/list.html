@@ -1,0 +1,29 @@
+
+<table class='table'>
+{{#each stories}}
+<tr>
+  <td>{{ OidToFormattedDate _id "MMM D" }}</td>
+  <td><a href='/stories/{{_id}}'>{{ Trim summary 50 }}</a></td>
+  <td>
+    {{#if approvedForPublic}}
+    <form method='post' action='/stories/unapprove'>
+      <input type='hidden' name='story_id' value='{{_id}}' />
+      <input type='submit' value='Unapprove' class='btn btn-primary' />
+    </form>
+    {{else}}
+    <form method='post' action='/stories/approve'>
+      <input type='hidden' name='story_id' value='{{_id}}' />
+      <input type='submit' value='Approve' class='btn btn-primary' />
+    </form>
+    {{/if}}
+  </td>
+
+  <td>
+    <form method='post' action='/stories?_method=DELETE'>
+      <input type='hidden' name='story_id' value='{{_id}}' />
+      <input type='submit' value='Trash' class='btn btn-danger' />
+    </form>
+  </td>
+</tr>
+{{/each}}
+</table>
