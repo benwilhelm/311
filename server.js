@@ -4,6 +4,7 @@ var express = require('express')
   , cookeParser = require('cookie-parser')
   , hbs = require('hbs')
   , hbsHelpers = require('./lib/hbs-helpers.js')
+  , helperMiddleware = require('./middleware/helpers.js')
   , mongoose = require('mongoose')
   , morgan = require('morgan')
   ;
@@ -18,6 +19,7 @@ app.set('env', process.env.NODE_ENV || 'development');
 app.set('view engine', 'html') ;
 app.engine('html', hbs.__express) ;
 
+app.use(helperMiddleware);
 app.use(express.static('./public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
