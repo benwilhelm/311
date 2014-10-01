@@ -1,3 +1,35 @@
+{{#if loggedIn}}
+<div id="story_admin" class='clearfix'>
+
+  {{#if story.approvedForPublic}}
+  <form class='fleft' action="/stories/unapprove" method='post'>
+    <input type="hidden" name='story_id' value='{{story._id}}' />
+    <input type='hidden' name='redirect' value='/stories/{{story._id}}' />
+    <button type="submit" class="button-reject" title='Reject'>
+      <span class='glyphicon glyphicon-minus-sign'></span>
+    </button>
+  </form>
+  {{else}}
+  <form class='fleft' action="/stories/approve" method='post'>
+    <input type="hidden" name='story_id' value='{{story._id}}' />
+    <input type='hidden' name='redirect' value='/stories/{{story._id}}' />
+    <button type="submit" class="button-approve" title='Approve'>
+      <span class='glyphicon glyphicon-ok-sign'></span>
+    </button>
+  </form>
+  {{/if}}
+  
+  <form class='fleft confirm' method='post' action='/stories?_method=DELETE'>
+    <input type='hidden' name='story_id' value='{{story._id}}' />
+    <input type='hidden' name='redirect' value='/stories' />
+    <button type='submit' class='button-trash'>
+      <span class="glyphicon glyphicon-trash"></span>
+    </button>
+  </form>
+  
+</div>
+{{/if}}
+
 <div id="summary">
   {{Nl2Br story.summary}}
 </div>

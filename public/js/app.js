@@ -14,4 +14,9 @@ $(document).ready(function(){
     
     $("#story_controls").before($group);
   });
+  
+  $("form.confirm").submit(function(e){
+    var msg = $(this).attr('data-confirm') || "Are you sure?";
+    return confirm(msg);
+  });
 });

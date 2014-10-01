@@ -1,5 +1,5 @@
 module.exports = function(req, res, next) {
-  
+
   if (req.user) {
     res.locals.loggedIn = true;
     res.pageClasses = ['logged-in'];
@@ -10,6 +10,7 @@ module.exports = function(req, res, next) {
   var pageClasses = pageClassesFromPath(req.originalUrl);
   res.pageClasses = res.pageClasses.concat( pageClasses );
   res.locals.pageClasses = res.pageClasses.join(' ');
+  res.locals.thisPage = req.originalUrl;
 
   next();
 }

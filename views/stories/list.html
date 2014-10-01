@@ -1,3 +1,6 @@
+{{#unless stories.length}}
+<p>Nothing to show...</p>
+{{/unless}}
 
 <table class='table'>
 {{#each stories}}
@@ -8,20 +11,29 @@
     {{#if approvedForPublic}}
     <form method='post' action='/stories/unapprove'>
       <input type='hidden' name='story_id' value='{{_id}}' />
-      <input type='submit' value='Unapprove' class='btn btn-primary' />
+      <input type='hidden' name='redirect' value='{{../../thisPage}}' />
+      <button type='submit' class='button-reject' title='Reject'>
+        <span class='glyphicon glyphicon-minus-sign'></span>
+      </button>
     </form>
     {{else}}
     <form method='post' action='/stories/approve'>
       <input type='hidden' name='story_id' value='{{_id}}' />
-      <input type='submit' value='Approve' class='btn btn-primary' />
+      <input type='hidden' name='redirect' value='{{../../thisPage}}' />
+      <button type='submit' class='button-approve' title='Approve'>
+        <span class='glyphicon glyphicon-ok-sign'></span>
+      </button>
     </form>
     {{/if}}
   </td>
 
   <td>
-    <form method='post' action='/stories?_method=DELETE'>
+    <form method='post' action='/stories?_method=DELETE' class='confirm'>
       <input type='hidden' name='story_id' value='{{_id}}' />
-      <input type='submit' value='Trash' class='btn btn-danger' />
+      <input type='hidden' name='redirect' value='{{../thisPage}}' />
+      <button type='submit' class='button-trash'>
+        <span class='glyphicon glyphicon-trash'></span>
+      </button>
     </form>
   </td>
 </tr>

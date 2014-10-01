@@ -10,6 +10,7 @@ var async = require('async')
   ;
 
 
+
 /**
  * Middleware to fetch story for any route that includes a story_id param
  */
@@ -21,35 +22,46 @@ var getRequestedStory = function(req, res, next){
         if (err) return next(err);
         if (!story) return next(new Error("Could not load story " + id));
         req.story = story;
-        next();
+        return next();
       });
     })
   } else {
     next();
   }
 };
-router.use(getRequestedStory);
 
 
 /**
  * GET /stories
  * Only authenticated user (admin) can access
  */
-router.route('/stories')
-.get(ensureAuthenticated, function(req, res){
-  res.send("GET stories...");
-})
-.delete(ensureAuthenticated, function(req, res){
+router.get('/stories', ensureAuthenticated, function(req, res){
+  Story.find({}).sort('-_id').exec(function(err, stories){
+    if (err) {
+      console.error(err);
+      res.send(500);
+    }
+    
+    res.render('stories/list.html', {
+      pageTitle: 'User-Submitted Stories',
+      stories: stories
+    });
+  });
+});
+
+router.delete('/stories', ensureAuthenticated, getRequestedStory, function(req, res){
   req.story.remove(function(err, rslt){
     if (err) {
       console.error(err);
       res.status(500).end();
     }
     
-    res.redirect('/stories/unapproved');
+    var redirect = req.body.redirect || '/stories';
+    res.redirect(redirect);
   })
-})
-.post(function(req, res){
+});
+
+router.post('/stories', function(req, res){
   var summary = req.body.summary;
   
   var tickets = req.body.tickets || [];
@@ -82,9 +94,9 @@ router.route('/stories')
 
 
 router.get('/stories/unapproved', ensureAuthenticated, function(req, res){
-  Story.find({approvedForPublic: false}, function(err, stories){
+  Story.find({approvedForPublic: false}).sort('-_id').exec(function(err, stories){
     if (err) {
-      console.log(err);
+      console.error(err);
       res.send(500);
     }
     
@@ -96,9 +108,9 @@ router.get('/stories/unapproved', ensureAuthenticated, function(req, res){
 });
 
 router.get('/stories/approved', ensureAuthenticated, function(req, res){
-  Story.find({approvedForPublic: true}, function(err, stories){
+  Story.find({approvedForPublic: true}).sort('-_id').exec(function(err, stories){
     if (err) {
-      console.log(err);
+      console.error(err);
       res.send(500);
     }
     
@@ -110,7 +122,7 @@ router.get('/stories/approved', ensureAuthenticated, function(req, res){
 });
 
 
-router.post('/stories/approve', ensureAuthenticated, function(req, res){
+router.post('/stories/approve', ensureAuthenticated, getRequestedStory, function(req, res){
   req.story.approvedForPublic = true;
   req.story.save(function(err, rslt){
     if (err) {
@@ -118,11 +130,12 @@ router.post('/stories/approve', ensureAuthenticated, function(req, res){
       res.status(500).end();
     }
     
-    res.redirect('/stories/unapproved');
+    var redirect = req.body.redirect || '/stories/unapproved';
+    res.redirect(redirect);
   })
 })
 
-router.post('/stories/unapprove', ensureAuthenticated, function(req, res){
+router.post('/stories/unapprove', ensureAuthenticated, getRequestedStory, function(req, res){
   req.story.approvedForPublic = false;
   req.story.featured = false;
   req.story.save(function(err, rslt){
@@ -131,7 +144,8 @@ router.post('/stories/unapprove', ensureAuthenticated, function(req, res){
       res.status(500).end();
     }
     
-    res.redirect('/stories/unapproved');
+    var redirect = req.body.redirect || '/stories/approved';
+    res.redirect(redirect);
   })
 })
 
@@ -169,14 +183,19 @@ router.get('/stories/example', function(req, res){
   });
 });
 
+
 /**
  * GET /stories/:story_id
  */
-router.get('/stories/:story_id', function(req, res){
+router.get('/stories/:story_id', getRequestedStory, function(req, res){
   res.render('stories/show', {
     pageTitle: "True Story...",
     story: req.story
   });
-})
+});
 
 module.exports = router;
+
+
+
+
