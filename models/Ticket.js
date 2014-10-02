@@ -16,7 +16,8 @@ var TicketSchema = new Schema({
   },
   
   description: {
-    type: String
+    type: String,
+    required: "Please describe this ticket"
   }
 });
 

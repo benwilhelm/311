@@ -11,6 +11,18 @@ module.exports = function(grunt) {
       }
     },
 
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: [
+          'test/unit/**/*.js',
+          'test/integration/**/*.js'
+        ]
+      }
+    },
+    
     supervisor: {
       target: {
         script: 'server.js',
@@ -22,15 +34,24 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      scripts: {
+      less: {
         files: ['src/less/*.less'],
         tasks: ['less']
+      },
+      
+      test: {
+        files: [
+          './**/*.js',
+          '!./node_modules/**'
+        ],
+        tasks: ['mochaTest']
       }
     }
 
   });
 
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-supervisor');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
