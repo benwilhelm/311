@@ -59,4 +59,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['supervisor','watch']);
+  grunt.registerTask('test',['mochaTest']);
 };

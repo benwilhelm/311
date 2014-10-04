@@ -42,7 +42,7 @@ app.use(helperMiddleware);
 
 
 
-var mongo_url = "mongodb://localhost/311_development";
+var mongo_url = "mongodb://localhost/311_" + app.get('env');
 
 switch (app.get('env')) {
   case 'development':
@@ -68,3 +68,4 @@ var port = process.env.PORT || 3000 ;
 app.listen(port) ;
 
 console.log('\nApplication listening on port ' + port);
+module.exports = app;
