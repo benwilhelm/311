@@ -15,22 +15,22 @@ After installing the requirements above and starting mongodb...
     $ cd 311
     $ ./setup.sh
     $ grunt
-    
+
+The `grunt` command starts the development server on port 3000  
+Now visit `http://localhost:3000` in your browser
+
 ###What `setup.sh` is doing...
 
 `Setup.sh` is taking care of some dependency installations for you. Here are the details of what it's doing:
 
-* Install Grunt CLI globaly: `npm install -g grunt-cli`
-  
+* Install Grunt CLI globaly: `npm install -g grunt-cli`  
   This command only runs if you have not yet installed the [Grunt](gruntjs.com) javascript task runner. We use Grunt to handle the starting and restarting of the node server when files are changed, running the test suite, and compiling LESS source files into CSS.
   
-* Install app dependencies: `npm install`
-  
+* Install app dependencies: `npm install`  
   This installs the application dependencies as defined in `package.json`
 
   
-* Symlink Git hooks
-
+* Symlink Git hooks  
   Symlinking the scripts in git-hooks into .git/hooks automates some tasks for you when committing, pulling, and merging. The `pre-commit` hook runs the test suite via `grunt test` in order to ensure that you are not introducing any regressions with your commit. The `post-merge` hook prunes and installs any new npm dependencies, runs any database migrations, and runs the test suite.
   
 
