@@ -7,6 +7,10 @@ module.exports.User = {
     },
     email: 'admin@test.com',
     password: 'password123'
-    //role: ''
+    
+    // This will be relevant when we start allowing
+    // people to log in and continually edit their
+    // submissions
+    // role: ''
   }
 }
