@@ -2,4 +2,5 @@
 
 npm prune
 npm install
+grunt migrate:all
 grunt test

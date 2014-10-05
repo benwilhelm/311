@@ -1,5 +1,13 @@
 module.exports = function(grunt) {
 
+  process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-supervisor');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-mongo-migrations')
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
@@ -10,7 +18,14 @@ module.exports = function(grunt) {
         }
       }
     },
-
+    
+    migrations: {
+      path: __dirname + "/migrations",
+      template: grunt.file.read( __dirname + "/migrations/_template.js"),
+      mongo: process.env.MONGOLAB_URI || 'mongodb://localhost/311_' + process.env.NODE_ENV,
+      ext: "js"
+    },
+    
     mochaTest: {
       test: {
         options: {
@@ -53,10 +68,7 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-mocha-test');
-  grunt.loadNpmTasks('grunt-supervisor');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+
 
   grunt.registerTask('default', ['supervisor','watch']);
   grunt.registerTask('test',['mochaTest']);
