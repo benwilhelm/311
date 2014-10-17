@@ -8,6 +8,7 @@ var express = require('express')
   , hbsHelpers = require('./lib/hbs-helpers.js')
   , helperMiddleware = require('./middleware/helpers.js')
   , methodOverride = require('method-override')
+  , mdblurb = require('mdblurb')
   , mongoose = require('mongoose')
   , morgan = require('morgan')
   , session = require('express-session')
@@ -39,9 +40,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(helperMiddleware);
 
-
-
-
 var mongo_url = "mongodb://localhost/311_" + app.get('env');
 
 switch (app.get('env')) {
@@ -58,6 +56,13 @@ switch (app.get('env')) {
 
 
 mongoose.connect(mongo_url);
+mdblurb.registerApp(app, {
+  connectionString: mongo_url,
+  auth: function(req, res, next) {
+    req.canEditBlurb = req.isAuthenticated();
+    next();
+  }
+})
 
 app.use(require('./routes/index'));
 app.use(require('./routes/stories'));

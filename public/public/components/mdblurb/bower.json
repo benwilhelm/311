@@ -1,0 +1,33 @@
+{
+  "name": "mdblurb",
+  "version": "0.0.1",
+  "authors": [
+    "Ben Wilhelm <ben@doublebeamdesign.com>"
+  ],
+  "description": "Front-end component to the npm module mdblurb",
+  "main": "mdblurb.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "markdown",
+    "editable",
+    "text",
+    "blurb",
+    "section"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/benwilhelm/bower-mdblurb",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.11",
+    "font-awesome": "~4.2.0"
+  }
+}
