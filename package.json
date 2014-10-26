@@ -29,7 +29,7 @@
   },
   "main": "server.js",
   "engines": {
-    "node": "0.10.x"
+    "node": "0.10.25"
   },
   "devDependencies": {
     "mocha": "^1.21.4",
