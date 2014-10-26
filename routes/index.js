@@ -13,6 +13,10 @@ router.get('/resources', function(req, res){
   res.render("resources.html", {pageTitle: "311 Resident Resources"});
 });
 
+router.get('/feedback', function(req, res){
+  res.render("feedback.html", {pageTitle: "User Feedback"});
+});
+
 
 router.get('/login', function(req, res){
   res.render('login.html', {pageTitle: "Sign in"});
