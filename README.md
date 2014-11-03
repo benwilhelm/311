@@ -2,6 +2,8 @@
 
 This is an application to allow Chicago residents to report instances of miscommunication (or lack of communication) on the part of multiple city services when attempting to address a 311 issue. 
 
+The app can currently be found at http://chicago311woes.herokuapp.com
+
 ## Requirements
 
 * [node.js and npm](http://nodejs.org)
